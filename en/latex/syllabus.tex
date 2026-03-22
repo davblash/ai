@@ -1,0 +1,180 @@
+\documentclass[11pt]{article}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage[margin=1in]{geometry}
+\usepackage{microtype}
+\usepackage{xcolor}
+\usepackage{hyperref}
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{enumitem}
+\usepackage{titlesec}
+\usepackage{tabularx}
+\usepackage{amsmath,amssymb}
+\usepackage{fancyhdr}
+\usepackage{setspace}
+\usepackage{tikz}
+\usetikzlibrary{calc}
+
+\hypersetup{hidelinks}
+\setlist[itemize]{topsep=3pt,itemsep=2pt,parsep=0pt,leftmargin=1.5em}
+\setlist[enumerate]{topsep=3pt,itemsep=2pt,parsep=0pt,leftmargin=1.7em}
+\setstretch{1.04}
+
+\definecolor{accent}{RGB}{28,73,135}
+\definecolor{lightaccent}{RGB}{238,243,250}
+\definecolor{rulegray}{RGB}{170,178,188}
+
+\titleformat{\section}{\large\bfseries\color{accent}}{}{0em}{}
+\titleformat{\subsection}{\normalsize\bfseries\color{accent}}{}{0em}{}
+\titlespacing*{\section}{0pt}{1.0em}{0.4em}
+\titlespacing*{\subsection}{0pt}{0.8em}{0.3em}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{AI / ML Foundations Syllabus}
+\fancyhead[R]{\thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0pt}
+
+\newcommand{\syllabustitle}[1]{%
+  \begin{center}
+    {\LARGE\bfseries\color{accent} #1}\\[0.4em]
+    {\large Based on \emph{Artificial Intelligence: A Mathematical and Engineering Perspective}}\\[0.3em]
+    {\normalsize 14-week semester plan}
+  \end{center}
+}
+
+\newcommand{\infobox}[1]{%
+  \vspace{0.4em}
+  \noindent
+  \colorbox{lightaccent}{\parbox{\dimexpr\linewidth-2\fboxsep\relax}{#1}}
+  \vspace{0.4em}
+}
+
+\begin{document}
+
+\syllabustitle{Syllabus}
+
+\infobox{\textbf{Course premise.} This course uses the textbook to build a mathematically grounded, engineering-aware understanding of modern machine learning and AI. The course begins with learning theory and generalization, moves through neural networks and optimization, studies architectural inductive bias, then covers representation learning, generative modeling, and the major open questions surrounding deep learning reliability and theory.}
+
+\section{Course Description}
+This course introduces artificial intelligence and machine learning from a unified mathematical and engineering perspective. Students learn how predictive models are formalized, trained, generalized, stabilized, and scaled. The course places classical methods and deep learning in one coherent narrative: from prediction, regularization, and optimization to representation learning, transformers, foundation models, and generative AI.
+
+The syllabus is structured directly from the textbook's six-part arc:
+\begin{itemize}
+  \item Learning from data, prediction, and generalization
+  \item Neural networks and deep learning optimization
+  \item Architecture and inductive bias
+  \item Representation learning, transfer, and foundation models
+  \item Generative modeling and generative AI
+  \item Generalization, reliability, and open questions
+\end{itemize}
+
+\section{Prerequisites}
+Students should be comfortable with multivariable calculus, linear algebra, probability at the level of random variables and expectation, and basic programming for numerical experiments. Prior exposure to optimization or machine learning is helpful but not required.
+
+\section{Learning Outcomes}
+By the end of the course, students should be able to:
+\begin{enumerate}
+  \item formulate supervised learning problems mathematically and explain the role of model class, loss, risk, and generalization;
+  \item derive and interpret gradient-based learning rules for neural networks, including backpropagation on small models by hand;
+  \item explain why deep networks are hard to train and how initialization, normalization, residual connections, and optimization choices improve trainability;
+  \item compare major architectural ideas such as convolution, recurrence, attention, and transformers through the lens of inductive bias;
+  \item explain representation learning, transfer learning, and foundation models as a shift from task-specific prediction to reusable learned structure;
+  \item distinguish the main paradigms of generative modeling, including VAEs, GANs, flows, and diffusion models;
+  \item separate what is mathematically established, empirically regular, and still open in modern deep learning.
+\end{enumerate}
+
+\section{Suggested Course Structure and Assessment}
+\begin{itemize}
+  \item \textbf{Problem sets:} 35\% 
+  \item \textbf{Midterm:} 20\%
+  \item \textbf{Mini-project or reading presentation:} 15\%
+  \item \textbf{Final project or final exam:} 30\%
+\end{itemize}
+
+\noindent A natural rhythm is one weekly lecture block on concepts, one problem-solving/discussion block, and regular short derivations from the worked examples in Chapters 2, 3, and 5.
+
+\section{Textbook Map}
+\begin{center}
+\begin{tabularx}{\linewidth}{>{\raggedright\arraybackslash}p{0.10\linewidth} >{\raggedright\arraybackslash}p{0.34\linewidth} X}
+\toprule
+\textbf{Part} & \textbf{Textbook chapter} & \textbf{Core role in the course} \\
+\midrule
+I & Learning from Data: Models, Prediction, and Generalization & Formal learning setup, risk, Bayes ideas, generalization, optimization, and learning paradigms \\
+II & Neural Networks and the Rise of Deep Learning & Function composition, depth, backpropagation, trainability, initialization, normalization, residual learning, and worked examples \\
+III & Architecture and Inductive Bias in Deep Learning & Convolution, recurrence, gating, attention, transformers, and comparative case studies \\
+IV & Representation Learning, Transfer, and Foundation Models & Reusable representation, self-supervision, transfer, scale, and modern deployment logic \\
+V & Generative Modeling and Generative AI & Latent-variable models, GANs, normalizing flows, diffusion, and comparative analysis \\
+VI & Understanding Deep Learning: Generalization, Reliability, and Open Questions & Theory limits, reliability, interpretability, efficiency, and unresolved problems \\
+\bottomrule
+\end{tabularx}
+\end{center}
+
+\section{Weekly Schedule}
+\renewcommand{\arraystretch}{1.2}
+\begin{longtable}{>{\raggedright\arraybackslash}p{0.08\linewidth} >{\raggedright\arraybackslash}p{0.28\linewidth} >{\raggedright\arraybackslash}p{0.34\linewidth} >{\raggedright\arraybackslash}p{0.22\linewidth}}
+\toprule
+\textbf{Week} & \textbf{Theme} & \textbf{Textbook reading} & \textbf{Suggested emphasis / deliverable} \\
+\midrule
+\endfirsthead
+\toprule
+\textbf{Week} & \textbf{Theme} & \textbf{Textbook reading} & \textbf{Suggested emphasis / deliverable} \\
+\midrule
+\endhead
+1 & What it means to learn & Chapter 1, Sections 1.1--1.3 & Formalize learning problems; distinguish prediction, representation, and decision. \\
+2 & Generalization and optimization & Chapter 1, Sections 1.4--1.5 & Empirical vs population risk, overfitting, optimization as the engine of learning. Problem Set 1. \\
+3 & Learning paradigms and the classical-to-deep bridge & Chapter 1, Sections 1.6--1.7 and Chapter 2, Section 2.1 & Supervised / unsupervised / reinforcement learning; perceptron, logistic regression, regularization, margin, SVM, kernels, and the limitation of fixed representations. \\
+4 & Neural networks as compositional models & Chapter 2, Sections 2.2--2.4 & MLPs, depth, computation graphs, and backpropagation. Hand derivation lab. \\
+5 & Why deep models are hard to train & Chapter 2, Sections 2.5--2.7 & Jacobian products, vanishing / exploding gradients, initialization, signal propagation, normalization, and regularization. Problem Set 2. \\
+6 & Residual learning and consolidation & Chapter 2, Sections 2.8--2.10 & Residual blocks, worked examples, and what is established vs open in deep learning. Midterm review. \\
+7 & Convolution and multiscale structure & Chapter 3, Sections 3.1--3.3 & Inductive bias, locality, weight sharing, convolution, Fourier viewpoint. Midterm or in-class assessment. \\
+8 & Sequence modeling and memory & Chapter 3, Sections 3.4--3.5 & RNNs, LSTMs, GRUs, gating, long-term dependencies. \\
+9 & Attention and transformers & Chapter 3, Sections 3.6--3.10 & From recurrence to attention, transformer architecture, scaling, multimodality, and comparative case studies. Problem Set 3. \\
+10 & Representation learning and transfer & Chapter 4, Sections 4.1--4.5 & Self-supervision, reusable representation, transfer learning, adaptation, and foundation-model logic. \\
+11 & Sequential decision-making and deep RL & Chapter 4, Sections 4.6--4.9 & State representation, control, modern representation-learning case studies, and open questions. Mini-project proposal or reading presentation. \\
+12 & Generative modeling I & Chapter 5, Sections 5.1--5.5 & Data distributions, EM, latent variables, VAEs, GANs, and normalizing flows. \\
+13 & Generative modeling II & Chapter 5, Sections 5.6--5.10 & Denoising, diffusion, paradigm comparison, visual case studies, and what is established vs open. Problem Set 4. \\
+14 & Reliability, interpretability, and open problems & Chapter 6, Sections 6.1--6.7 & Generalization puzzles, reliability, interpretability, scaling constraints, future directions, and final synthesis. Final project / final review. \\
+\bottomrule
+\end{longtable}
+
+\section{Recommended Problem-Set Arc}
+\begin{enumerate}
+  \item \textbf{Problem Set 1:} risk minimization, Bayes decision rules, generalization intuition, and optimization basics.
+  \item \textbf{Problem Set 2:} forward and backward passes, vanishing / exploding gradients, initialization heuristics, normalization, and residual blocks.
+  \item \textbf{Problem Set 3:} convolution, recurrence, attention, and architectural comparison.
+  \item \textbf{Problem Set 4:} transfer learning, contrastive or self-supervised ideas, and comparative generative modeling.
+\end{enumerate}
+
+\section{Suggested Midterm and Final Scope}
+\subsection*{Midterm}
+Chapters 1 and 2, plus the opening conceptual frame of Chapter 3. The midterm should emphasize mathematical setup, derivation, and conceptual comparison, rather than implementation trivia.
+
+\subsection*{Final}
+Comprehensive, with emphasis on Chapters 3--6 and the ability to synthesize across topics: optimization, architecture, representation, generation, and reliability.
+
+\section{Suggested Project Options}
+\begin{itemize}
+  \item A comparative theoretical note on two model families from the text, such as SVMs vs neural networks, CNNs vs transformers, or VAEs vs diffusion models.
+  \item A small empirical study that reproduces one worked example or case-study arc from the textbook.
+  \item A literature-guided presentation on one ``what is established / what remains open'' section.
+  \item A derivation-centered report explaining one major mechanism, such as backpropagation, batch normalization, attention, or diffusion objectives.
+\end{itemize}
+
+\section{Teaching Notes for Instructors}
+\begin{itemize}
+  \item If the course is more mathematical, slow down in Weeks 4--6 and assign extra derivations from Chapters 2 and 5.
+  \item If the course is more systems-oriented, compress some Chapter 1 theory and spend more time on Chapters 3--5.
+  \item If the course is for advanced undergraduates, keep Chapters 4 and 6 conceptually broad and use Chapter 2 case studies as the primary computational practice.
+  \item If the course is on a quarter system, combine Weeks 10--11 and Weeks 12--13, while preserving the opening logic of Chapters 1--3.
+\end{itemize}
+
+\section{What Students Should Leave With}
+\infobox{Students should leave the course with a unified map of the field: how learning is formalized, why deep networks work as compositional representation learners, how architecture expresses inductive bias, how modern foundation and generative models extend these ideas, and where the deepest theoretical and reliability gaps still remain.}
+
+\end{document}
